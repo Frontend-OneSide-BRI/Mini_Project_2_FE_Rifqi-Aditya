@@ -1,0 +1,17 @@
+input:focus{
+    outline: none;
+}
+.category {
+    background: linear-gradient(#000000 0 0) var(--p, 0) / var(--p, 0) no-repeat;
+    transition: 0.4s, background-position 0s;
+}
+
+.category-active {
+    color: #fff;
+    background: #000000;
+}
+
+.category:hover {
+    --p: 100%;
+    color: #fff;
+}
