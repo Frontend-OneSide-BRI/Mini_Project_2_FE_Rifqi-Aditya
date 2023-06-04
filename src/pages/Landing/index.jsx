@@ -2,8 +2,8 @@ import React from "react";
 import Layout from "@shared/components/Layout";
 import PhotoSlider from "@pages/Landing/components/PhotoSlider";
 import Marquee from "./components/Marquee";
-import useSharedViewModel from "../../shared/ViewModel";
-import { imgData } from "@shared/data/data";
+import useSharedViewModel from "@shared/ViewModel";
+import { shuffleArray } from "@shared/utils/utils";
 
 const Landing = () => {
   const { getImageData } = useSharedViewModel();
@@ -26,11 +26,11 @@ const Landing = () => {
           </p>
         </div>
         <div className="w-full lg:w-3/4">
-          <Marquee imgData={imgData} />
+          <Marquee imgData={shuffleArray(getImageData("All"))} />
         </div>
       </header>
       <section className="my-14 md:my-24">
-        <div className="flex flex-col items-end text-right mb-5">
+        <div className="mb-5">
           <h4 className="text-xl mb-2 md:text-2xl">Automotive</h4>
           <p className="text-xs text-stone-600 max-w-md md:text-sm">
             Explore, admire, and get inspired as you embark on a visual journey
