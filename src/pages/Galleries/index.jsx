@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { categoryData } from "@shared/data/data";
+import { shuffleArray } from "../../shared/utils/utils";
 import Layout from "@shared/components/Layout";
 import useSharedViewModel from "@shared/ViewModel";
 import Masonry from "./components/Masonry";
@@ -13,10 +14,18 @@ const Galleries = () => {
   const { getImageData } = useSharedViewModel();
   const { getSelectedImageData } = useViewModel();
 
-  const [imageData, setImageData] = useState(getImageData("All"));
+  const [imageData, setImageData] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageId, setSelectedImageId] = useState(0);
+
+  useEffect(() => {
+    setImageData(shuffleArray(getImageData("All")));
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [imageData]);
 
   return (
     <Layout>
@@ -29,7 +38,7 @@ const Galleries = () => {
           setActiveCategory={setActiveCategory}
         />
       )}
-      <header className="flex flex-col justify-center items-center mb-10 sm:mb-14">
+      <header className="flex flex-col justify-center items-center mb-14">
         <h1 className="mb-5 text-lg sm:mb-2 sm:text-xl md:text-2xl lg:text-3xl">
           Our Collection
         </h1>
