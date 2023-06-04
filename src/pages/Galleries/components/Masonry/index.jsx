@@ -10,9 +10,15 @@ const Masonry = ({ imageData, setIsModalOpen, setSelectedImageId }) => {
             setSelectedImageId(image.id);
           }}
         >
-          <div className="relative">
-            <img src={image.url} alt={image.title} />
-            <p className="absolute bottom-1 left-2 text-white text-sm">
+          <div className="group bg-gradient-to-b from-black to-black relative overflow-hidden">
+            <div className="transition-opacity ease-in-out duration-300 opacity-100 group-hover:opacity-80">
+              <img
+                className="transition ease-in-out duration-300 group-hover:scale-110"
+                src={image.url}
+                alt={image.title}
+              />
+            </div>
+            <p className="absolute bottom-1 left-2 text-white text-sm transition-opacity ease-in-out duration-300 opacity-0 group-hover:opacity-100">
               {image.title || ""}
             </p>
           </div>
