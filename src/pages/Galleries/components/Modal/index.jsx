@@ -11,7 +11,7 @@ const Modal = ({
     <div
       className="fixed inset-0 px-5 backdrop-blur-sm z-10 text-white flex justify-center items-center sm:px-0"
       onClick={(e) => {
-        //close modal when clicking outside it
+        //close modal when clicking outside of it
         e.stopPropagation();
         setIsModalOpen(false);
       }}
