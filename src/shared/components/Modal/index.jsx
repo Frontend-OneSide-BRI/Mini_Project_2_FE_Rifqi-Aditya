@@ -1,6 +1,12 @@
 import Xmark from "@assets/Xmark";
 
-const Modal = ({ selectedImageData, setIsModalOpen }) => {
+const Modal = ({
+  selectedImageData,
+  setIsModalOpen,
+  setImageData,
+  getImageData,
+  setActiveCategory,
+}) => {
   return (
     <div className="fixed inset-0 px-5 backdrop-blur-sm z-10 text-white flex justify-center items-center sm:px-0">
       <div className="bg-black px-6 pb-8 rounded-t-sm sm:px-10">
@@ -24,7 +30,12 @@ const Modal = ({ selectedImageData, setIsModalOpen }) => {
               {selectedImageData[0].category.map((cat, i) => (
                 <div
                   key={i}
-                  className="bg-white text-black p-1 rounded-sm text-xs"
+                  className="bg-white text-black p-1 rounded-sm text-xs hover:cursor-pointer opacity-90 transition duration-300 hover:opacity-100"
+                  onClick={(e) => {
+                    setActiveCategory(e.target.innerText);
+                    setIsModalOpen(false);
+                    setImageData(getImageData(e.target.innerText));
+                  }}
                 >
                   <p>{cat}</p>
                 </div>
