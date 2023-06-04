@@ -18,7 +18,7 @@ const Masonry = ({ imageData, setIsModalOpen, setSelectedImageId }) => {
                 alt={image.title}
               />
             </div>
-            <p className="absolute bottom-1 left-2 text-white text-sm transition-opacity ease-in-out duration-300 opacity-0 group-hover:opacity-100">
+            <p className="absolute bottom-1 left-2 text-white text-xs sm:text-sm transition-opacity ease-in-out duration-300 opacity-0 group-hover:opacity-100">
               {image.title || ""}
             </p>
           </div>
