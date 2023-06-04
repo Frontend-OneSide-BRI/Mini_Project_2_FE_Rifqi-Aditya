@@ -7,14 +7,14 @@ import Modal from "@shared/components/Modal";
 import SearchIcon from "@assets/SearchIcon";
 import useViewModel from "./ViewModel";
 import "swiper/css";
-import "./styles/galleries.css";
+import "./galleries.css";
 
 const Galleries = () => {
   const { getImageData } = useSharedViewModel();
   const { getSelectedImageData } = useViewModel();
 
   const [imageData, setImageData] = useState(getImageData("All"));
-  const [activeCategory, setActiveCategory] = useState(0);
+  const [activeCategory, setActiveCategory] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageId, setSelectedImageId] = useState(0);
 
@@ -24,13 +24,16 @@ const Galleries = () => {
         <Modal
           setIsModalOpen={setIsModalOpen}
           selectedImageData={getSelectedImageData(selectedImageId)}
+          setImageData={setImageData}
+          getImageData={getImageData}
+          setActiveCategory={setActiveCategory}
         />
       )}
       <header className="flex flex-col justify-center items-center mb-10 sm:mb-14">
         <h1 className="mb-5 text-lg sm:mb-2 sm:text-xl md:text-2xl lg:text-3xl">
           Our Collection
         </h1>
-        <p className="text-center text-sm hidden mb-5 lg:mb-8 sm:inline lg:text-base">
+        <p className="text-center text-sm hidden mb-5 text-stone-600 lg:mb-8 sm:inline lg:text-base">
           Step into our virtual gallery and enjoy a seamless browsing
           experience, where you can admire each artwork up close and personal.
         </p>
@@ -41,6 +44,7 @@ const Galleries = () => {
             type="text"
             placeholder="Search for stunning images from the people"
             onChange={(e) => {
+              setActiveCategory(e.target.value === "" ? "All" : e.target.value);
               setImageData(
                 getImageData(e.target.value === "" ? "All" : e.target.value)
               );
@@ -52,11 +56,11 @@ const Galleries = () => {
             <div
               key={i}
               className={`hover:cursor-pointer ${
-                activeCategory === i && "category-active"
+                activeCategory === cat && "category-active"
               }`}
               onClick={() => {
                 setImageData(getImageData(cat));
-                setActiveCategory(i);
+                setActiveCategory(cat);
               }}
             >
               <p className="category w-fit text-sm p-1 lg:text-base">{cat}</p>
@@ -68,11 +72,17 @@ const Galleries = () => {
         {imageData.length === 0 ? (
           <p className="text-center">No Data Found</p>
         ) : (
-          <Masonry
-            imageData={imageData}
-            setIsModalOpen={setIsModalOpen}
-            setSelectedImageId={setSelectedImageId}
-          />
+          <>
+            <p className="text-sm mb-2">
+              {`Showing ${imageData.length} Images for `}
+              <strong>{activeCategory}</strong>
+            </p>
+            <Masonry
+              imageData={imageData}
+              setIsModalOpen={setIsModalOpen}
+              setSelectedImageId={setSelectedImageId}
+            />
+          </>
         )}
       </section>
     </Layout>
