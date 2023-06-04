@@ -1,3 +1,4 @@
+/* override base styling to make swiper always move without stopping */
 .swiper-wrapper{
     -webkit-transition-timing-function:linear!important;
     transition-timing-function:linear!important; 
