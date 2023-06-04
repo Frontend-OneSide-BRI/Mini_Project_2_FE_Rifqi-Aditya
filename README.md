@@ -1,6 +1,18 @@
-# Getting Started with Create React App
+## Key Takeaway
+- Made interactive UI/UX by utilizing [Tailwind](https://tailwindcss.com/) and vanilla CSS.
+- Utilized [Swiper.js](https://swiperjs.com/) to create animated swiper.
+- Made imports efficient and highly readable by using [CRACO](https://craco.js.org/).
+- Responsive Design that supports multiple devices.
+- Implemented clean project structure.
+- Split code into separate React components for reusability.
+- Used React functional component and React hooks.
+- Setup navigation using [React Router](https://reactrouter.com/en/main)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+- Search image by category.
+- Filter image by category via button on gallery page.
+- Filter image by category via button on image detail modal.
+- Show image detail.
 
 ## Available Scripts
 
