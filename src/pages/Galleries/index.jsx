@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { categoryData } from "@shared/data/data";
-import { shuffleArray } from "../../shared/utils/utils";
+import { shuffleArray } from "@shared/utils/utils";
 import Layout from "@shared/components/Layout";
 import useSharedViewModel from "@shared/ViewModel";
 import Masonry from "./components/Masonry";
-import Modal from "@shared/components/Modal";
+import Modal from "./components/Modal";
 import SearchIcon from "@assets/SearchIcon";
 import useViewModel from "./ViewModel";
 import "swiper/css";
