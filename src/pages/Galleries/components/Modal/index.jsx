@@ -9,7 +9,7 @@ const Modal = ({
 }) => {
   return (
     <div
-      className="fixed inset-0 px-5 backdrop-blur-sm z-10 text-white flex justify-center items-center sm:px-0"
+      className="fixed inset-0 px-5 backdrop-blur-sm z-10 text-white flex justify-center items-center sm:px-0 overflow-auto"
       onClick={(e) => {
         //close modal when clicking outside of it
         e.stopPropagation();
@@ -17,7 +17,7 @@ const Modal = ({
       }}
     >
       <div
-        className="bg-white border border-black px-6 pb-8 rounded-t-sm sm:px-10"
+        className="bg-white border border-black px-6 pb-8 rounded-t-sm sm:px-10 "
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mx-auto max-w-md">
@@ -29,7 +29,7 @@ const Modal = ({
             />
           </div>
           <img
-            className="rounded-t-sm"
+            className="rounded-t-sm max-h-96 w-full object-cover"
             src={selectedImageData[0].url}
             alt={selectedImageData[0].title}
           />
